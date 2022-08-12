@@ -1,13 +1,13 @@
-package com.projects_2022;
+package com.jobTracker;
+
+import com.myUtilities.DataValidation;
 
 import java.io.*;
-import java.sql.SQLOutput;
-import java.util.regex.*;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
+import java.util.Scanner;
+
 import static java.lang.System.exit;
-import java.util.regex.Pattern;
-import DateVa;o
+
+
 
 public class AppDriver {
 
@@ -16,7 +16,10 @@ public class AppDriver {
         //local variables
 
         int choice = 0;
-        //Scanner scanner = new Scanner(System.in);
+        String todaysDate = DataValidation.getTodaysDate();
+                //"08/11/2022";
+
+
         System.out.println("Hello and welcome to Work Hunt, 2022 Edition.");
 
         do {
@@ -29,87 +32,102 @@ public class AppDriver {
                 e.printStackTrace(System.out);
             }//end of catch for menu
 
-            try {
 
-                choice = getInt();
+            choice = DataValidation.getInt();
 
-
-                switch (choice) {
-                    case 1:
-                        Jobs currentJob = new Jobs();
+            switch (choice) {
+                case 1:
+                    try {
+                        boolean jobEntryIsCorrect = false;
                         String temp, temp2;
-                        do {
-                            System.out.print("Enter the company name: ");
-                            currentJob.setCompanyName(getString());
-                            System.out.print("Enter the position title: ");
-                            currentJob.setCompanyName(getString());
-                            System.out.println("Enter the application date in mm/dd/yyyy format");
+                        Jobs currentJob = new Jobs();
 
+                        while (!jobEntryIsCorrect) {
+                            //user input for job object
 
-                            temp = getString();
-                            //                    System.out.print("Is " + temp + " correct? Enter \"Yes\" or \"No\" .");
-                            //                    temp2 = getString();
-                            if (temp.equalsIgnoreCase("Y") || temp.equalsIgnoreCase("Yes") ||
-                                    temp.equalsIgnoreCase("Yeah") || temp.equalsIgnoreCase("Yea")) {
-                                currentJob.setCompanyName(getString());
+                            System.out.print("Did you apply today? (Y/N): ");
+                            if (DataValidation.getYes(DataValidation.getString())) {
+                                currentJob.setAppDate(todaysDate);
+                                currentJob.setStatusDate(todaysDate);
+                                currentJob.setStatus(String.valueOf(AppStatus.APPLIED).toLowerCase());
+                            } else {
+                                System.out.print("Enter the application date in mm/dd/yyyy format: ");
+                                currentJob.setAppDate(DataValidation.getDate(DataValidation.getString()));
+                                currentJob.setStatusDate(DataValidation.getDate(DataValidation.getString()));
+                                currentJob.setStatus(String.valueOf(AppStatus.APPLIED).toLowerCase());
                             }
-                        } while (temp.equalsIgnoreCase("No"));
-                        break;
+                            System.out.print("Enter the company name: ");
+                            currentJob.setCompanyName(DataValidation.getString());
+                            System.out.print("Enter the position title: ");
+                            currentJob.setTitle(DataValidation.getString());
+                            System.out.print("Enter the salary in \"$xxk\" format (if known): ");
+                            currentJob.setSalary(DataValidation.getString());
+                            System.out.print("Is it a remote position? (Y/N): ");
+                            if (DataValidation.getYes(DataValidation.getString())) {
+                                currentJob.setLocation("Remote");
+                            } else {
+                                System.out.print("Enter the location: ");
+                                currentJob.setLocation(DataValidation.getString());
+                            }
+                            System.out.println(currentJob.toString());
+                            System.out.print("\nIs the above job entry correct? (Y/N): ");
+                            if(DataValidation.getYes(DataValidation.getString())){
+                                Jobs.addJob(currentJob);
+                                System.out.println("\nThis Job has been entered.");
+                                Jobs.printList();
 
-                    case 2:
-                        String temp3, temp4;
-                        System.out.print("Enter the name the company name: ");
-                        temp3 = getString();
-                        System.out.print("Is " + temp3 + " correct? Enter \"Yes\" or \"No\" .");
-                        temp2 = getString();
+                            }
+                        }//end of while
+                        System.out.print("Would you like to enter a new job application?: ");
+                        if (DataValidation.getYes(DataValidation.getString()))
+                            break;
+                        else {
+                            System.out.println("\nExiting the program. Have a nice day!");
+                            exit(0);
+                        }
+                    }catch(Exception e){
+                        e.printStackTrace(System.out);
+                    }
 
-                    case 3:
-                        exit(0);
+                case 2:
+                    try{
+                        boolean jobEntryIsCorrect = false;
+                        String temp, temp2;
+                        Jobs currentJob = new Jobs();
 
-                    default:
-                        System.out.println("\nPlease enter a valid choice: ");
+                        while (!jobEntryIsCorrect) {
+                            String temp3, temp4;
+
+                            currentJob.toString();// is printint out just a squareBracket
+                            System.out.print("Enter the name the company name: ");
+                            temp3 = DataValidation.getString();
 
 
-                }//end of switch
-            } catch (Exception e) {
-                e.printStackTrace(System.out);
-            }//end catch for switch
+                            System.out.print("Would you like to enter a new job application?: ");
+                            if (DataValidation.getYes(DataValidation.getString()))
+                                break;
+                            else {
+                                System.out.println("\nExiting the program. Have a nice day!");
+                                exit(0);
+                            }
+                        }
+                    }catch(Exception e){
+                        e.printStackTrace(System.out);
+                    }
 
+                    break;
+
+                case 3:
+                    System.out.println("\nExiting the program. Have a nice day!");
+                    exit(0);
+
+                default:
+                    System.out.println("\nPlease enter a valid choice: ");
+
+
+            }//end of switch
         }while(choice != 3);
     }//end of main fxn
 
-        /**
-         *
-         * @return
-         * @throws IOException
-         */
-        public static String getString () throws IOException {
-                InputStreamReader isr = new InputStreamReader(System.in);
-                BufferedReader br = new BufferedReader(isr);
-                return br.readLine();
-            }
 
-        /**
-         *
-         * @return
-         */
-        public static String getInput () {
-                Scanner scanner = new Scanner(System.in);
-                String myString = "";
-                while (!scanner.hasNext()) {
-                    System.out.println("Please enter a valid String");
-                    scanner.next();
-                }
-                return scanner.nextLine();
-            }
-
-        /**
-         *
-         * @return
-         * @throws IOException
-         */
-        public static int getInt () throws IOException {
-                String s = getString();
-                return Integer.parseInt(s);
-            }
-    }//end of class
+}//end of class

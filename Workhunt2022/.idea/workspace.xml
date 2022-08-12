@@ -2,19 +2,15 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="c8ae06cd-26eb-431b-888e-8c1b4e89e560" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/jobTracker/AppDriver.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/jobTracker/AppStatus.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/myUtilities/DataValidation.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/junit.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/com/myUtilities/DataValidationTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Workhunt2022.iml" beforeDir="false" afterPath="$PROJECT_DIR$/Workhunt2022.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/Workhunt2022/AppDriver.class" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/Workhunt2022/Jobs.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/AppDriver.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Jobs.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/jobTracker/Jobs.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/jobTracker/AppDriver.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/jobTracker/AppDriver.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/jobTracker/AppStatus.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/jobTracker/AppStatus.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/jobTracker/Jobs.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/jobTracker/Jobs.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/myUtilities/DataValidation.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/myUtilities/DataValidation.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -26,6 +22,7 @@
       <list>
         <option value="Class" />
         <option value="Enum" />
+        <option value="JUnit4 Test Class" />
       </list>
     </option>
   </component>
@@ -57,11 +54,21 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "WebServerToolWindowFactoryState": "false",
+    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary": "JUnit4",
+    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit4": "",
     "project.structure.last.edited": "Libraries",
     "project.structure.proportion": "0.0",
     "project.structure.side.proportion": "0.2"
   }
 }]]></component>
+  <component name="RecentsManager">
+    <key name="CreateTestDialog.Recents.Supers">
+      <recent name="" />
+    </key>
+    <key name="CreateTestDialog.RecentsKey">
+      <recent name="com.myUtilities" />
+    </key>
+  </component>
   <component name="RunManager">
     <configuration name="com.jobTracker.AppDriver" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.jobTracker.AppDriver" />
@@ -91,7 +98,7 @@
       <workItem from="1659879899852" duration="8645000" />
       <workItem from="1660065504110" duration="20110000" />
       <workItem from="1660135917464" duration="27891000" />
-      <workItem from="1660307350939" duration="4114000" />
+      <workItem from="1660307350939" duration="5294000" />
     </task>
     <servers />
   </component>

@@ -1,2 +1,14 @@
-package com.jobTracker;public enum AppStatus {
+package com.jobTracker;
+
+public enum AppStatus {
+    APPLIED,
+    CANCELED,
+    PENDING_PHONE_INTERVIEW,
+    PENDING_VIDEO_INTERVIEW,
+    PENDING_IN_PERSON_INTERVIEW,
+    PENDING_ADDITIONAL_INTERVIEW,
+    PENDING_DOCUMENTATION,
+    REJECTED,
+    UNDER_REVIEW,
+    WITHDRAWN
 }

@@ -1,10 +1,10 @@
-package com.projects_2022;
+package com.jobTracker;
 
 import java.util.*;
 
 import static java.lang.System.exit;
 
-public class Jobs {
+class Jobs {
 
     // local data fields
     String title = "";
@@ -17,7 +17,7 @@ public class Jobs {
     Boolean rejected = false;
     Boolean isRemote = false;
 
-    static int count = 0;
+    private static int count = 0;
     static ArrayList<String> myJobsList = new ArrayList<>();
     static Map<String, ArrayList> myJobsMap = new HashMap<>();
 
@@ -34,7 +34,7 @@ public class Jobs {
         this.statusDate = statusDate;
         this.rejected = rejected;
         this.isRemote = isRemote;
-        //this.count = count;
+        this.count = count;
     }
 
     //Getters and Setters
@@ -75,6 +75,8 @@ public class Jobs {
     }
 
     public void setLocation(String location) {
+        if (location.equalsIgnoreCase("Remote"))
+            this.isRemote = true;
         this.location = location;
     }
 
@@ -106,9 +108,7 @@ public class Jobs {
         return isRemote;
     }
 
-    public void setRemote(Boolean remote) {
-        isRemote = remote;
-    }
+
 
     //Class methods
 
@@ -116,13 +116,14 @@ public class Jobs {
      *
      * @param currentJob
      */
-    static void addJob(Jobs currentJob){
+    static public void addJob(Jobs currentJob){
         if (currentJob == null) {
             System.out.println("Job is null");
             exit(-1);
         }else if(myJobsMap.containsKey(currentJob.appDate) && myJobsList.contains(currentJob.companyName))
             System.out.println("This job has already been added");
          else{
+            count++;
             myJobsList.add(currentJob.companyName);
             myJobsMap.put(currentJob.appDate, currentJob.myJobsList);
         }
@@ -131,9 +132,23 @@ public class Jobs {
     /**
      *
      */
-    void printList(){
+    static void printList(){
         System.out.println(myJobsList);
     }
 
 
+    /**
+     *
+     * @return
+     */
+    @Override
+    public String toString() {
+        return  "\t\n\nJob ID: " + count + 1 + '\n' +
+                "Application date: " + this.appDate + '\n' +
+                "Company name: " + this.companyName + '\n' +
+                "Position title: " + this.title + '\n' +
+                "Annual salary: " + this.salary + '\n' +
+                "Job location: " + this.location + '\n' +
+                "Status: " + this.status;
+    }
 }
