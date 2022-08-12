@@ -1,3 +1,5 @@
+package com.projects_2022;
+
 import java.util.*;
 
 import static java.lang.System.exit;
