@@ -14,9 +14,9 @@ public class AppDriver {
     public static void main(String[] args) throws IOException {
 
         //local variables
-
+        DataValidation dv = new DataValidation();
         int choice = 0;
-        String todaysDate = DataValidation.getTodaysDate();
+        String todaysDate = dv.getTodaysDate();
                 //"08/11/2022";
 
 
@@ -33,7 +33,7 @@ public class AppDriver {
             }//end of catch for menu
 
 
-            choice = DataValidation.getInt();
+            choice = dv.getInt();
 
             switch (choice) {
                 case 1:
@@ -46,40 +46,40 @@ public class AppDriver {
                             //user input for job object
 
                             System.out.print("Did you apply today? (Y/N): ");
-                            if (DataValidation.getYes(DataValidation.getString())) {
+                            if (dv.getYes(dv.getString())) {
                                 currentJob.setAppDate(todaysDate);
                                 currentJob.setStatusDate(todaysDate);
                                 currentJob.setStatus(String.valueOf(AppStatus.APPLIED).toLowerCase());
                             } else {
                                 System.out.print("Enter the application date in mm/dd/yyyy format: ");
-                                currentJob.setAppDate(DataValidation.getDate(DataValidation.getString()));
-                                currentJob.setStatusDate(DataValidation.getDate(DataValidation.getString()));
+                                currentJob.setAppDate(dv.getDate(dv.getString()));
+                                currentJob.setStatusDate(dv.getDate(dv.getString()));
                                 currentJob.setStatus(String.valueOf(AppStatus.APPLIED).toLowerCase());
                             }
                             System.out.print("Enter the company name: ");
-                            currentJob.setCompanyName(DataValidation.getString());
+                            currentJob.setCompanyName(dv.getString());
                             System.out.print("Enter the position title: ");
-                            currentJob.setTitle(DataValidation.getString());
+                            currentJob.setTitle(dv.getString());
                             System.out.print("Enter the salary in \"$xxk\" format (if known): ");
-                            currentJob.setSalary(DataValidation.getString());
+                            currentJob.setSalary(dv.getString());
                             System.out.print("Is it a remote position? (Y/N): ");
-                            if (DataValidation.getYes(DataValidation.getString())) {
+                            if (dv.getYes(dv.getString())) {
                                 currentJob.setLocation("Remote");
                             } else {
                                 System.out.print("Enter the location: ");
-                                currentJob.setLocation(DataValidation.getString());
+                                currentJob.setLocation(dv.getString());
                             }
-                            System.out.println(currentJob.toString());
+                            System.out.println(currentJob);
                             System.out.print("\nIs the above job entry correct? (Y/N): ");
-                            if(DataValidation.getYes(DataValidation.getString())){
+                            if(dv.getYes(dv.getString())){
                                 Jobs.addJob(currentJob);
                                 System.out.println("\nThis Job has been entered.");
                                 Jobs.printList();
-
+                                jobEntryIsCorrect = true;
                             }
                         }//end of while
                         System.out.print("Would you like to enter a new job application?: ");
-                        if (DataValidation.getYes(DataValidation.getString()))
+                        if (dv.getYes(dv.getString()))
                             break;
                         else {
                             System.out.println("\nExiting the program. Have a nice day!");
@@ -100,11 +100,11 @@ public class AppDriver {
 
                             currentJob.toString();// is printint out just a squareBracket
                             System.out.print("Enter the name the company name: ");
-                            temp3 = DataValidation.getString();
+                            temp3 = dv.getString();
 
 
                             System.out.print("Would you like to enter a new job application?: ");
-                            if (DataValidation.getYes(DataValidation.getString()))
+                            if (dv.getYes(dv.getString()))
                                 break;
                             else {
                                 System.out.println("\nExiting the program. Have a nice day!");

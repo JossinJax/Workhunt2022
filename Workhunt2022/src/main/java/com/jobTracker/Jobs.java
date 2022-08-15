@@ -124,7 +124,9 @@ class Jobs {
             System.out.println("This job has already been added");
          else{
             count++;
-            myJobsList.add(currentJob.companyName);
+            String myString = new String();
+            myString.valueOf("Job ID: " + count + "; " + currentJob.companyName);
+            myJobsList.add(myString);
             myJobsMap.put(currentJob.appDate, currentJob.myJobsList);
         }
     }

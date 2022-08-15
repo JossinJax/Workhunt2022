@@ -36,12 +36,15 @@ public class DataValidation {
         if (matcher.matches()){
             int month = Integer.parseInt(dateStr.substring(0, 2));
             int day = Integer.parseInt(dateStr.substring(3, 5));
-            int year = (Integer.parseInt(dateStr.substring(6, 9)));
-            if((month > 0 || month <= 12) && (day > 0 || day <= 31) && (year == currentYear)) {
-                return (month == 2 && day <= 29) || (month == 4 && day <= 30) || (month == 6 && day <= 30) || (month == 9 && day <= 30) || (month == 11 && day <= 30);
-            }
-        }
-        return false;
+            int year = Integer.parseInt(dateStr.substring(6, 10));
+
+            if((month < 0 || month > 12) || (day < 0 || day > 31) || (year != currentYear))
+                return false;
+            //special cases (leap year case is over kill atm)
+            if((month == 2 && day > 29) || (month == 4 && day > 30) || (month == 6 && day > 30) || (month == 9 && day > 30) || (month == 11 && day > 30))
+                return false;
+        }//end of if
+        return true;
     }
 
     /**
@@ -49,17 +52,13 @@ public class DataValidation {
      * @return
      */
     public static String getDate(String testDate) throws IOException {
-        if(isValidDateFormat(testDate))
-            return testDate;
-
-        System.out.println("The date entered was: " + testDate);
-        System.out.println(isValidDateFormat(testDate));
-
         while(!isValidDateFormat(testDate)){
-                System.out.println("Please enter a valid date: ");
-                testDate = getDate(getString());
-            }
-        return "Can't get date";
+            System.out.println("The date entered was: " + testDate);
+            System.out.println(isValidDateFormat(testDate));
+            System.out.print("Please enter a valid date: ");
+            testDate = getString();
+        }
+        return testDate;
     }
 
     /**
